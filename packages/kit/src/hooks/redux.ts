@@ -6,7 +6,7 @@ import type { Wallet } from '@onekeyhq/engine/src/types/wallet';
 import { appDispatch, appSelector } from '../store';
 
 import type { IAppState } from '../store';
-import type { Network } from '../store/reducers/network';
+import type { Network } from '../store/typings';
 
 export const useAppDispatch = () => {
   console.error(

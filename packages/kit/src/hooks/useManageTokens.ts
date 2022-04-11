@@ -4,11 +4,11 @@ import { Token } from '@onekeyhq/engine/src/types/token';
 
 import backgroundApiProxy from '../background/instance/backgroundApiProxy';
 import {
-  ValuedToken,
   changeActiveOwnedToken,
   changeActiveTokens,
   updateTokensPrice,
 } from '../store/reducers/general';
+import { ValuedToken } from '../store/typings';
 
 import { useAppSelector } from './redux';
 

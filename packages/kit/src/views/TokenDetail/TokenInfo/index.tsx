@@ -28,7 +28,7 @@ import {
 import platformEnv from '@onekeyhq/shared/src/platformEnv';
 
 import { useManageTokens } from '../../../hooks/useManageTokens';
-import { Network } from '../../../store/reducers/network';
+import { Network } from '../../../store/typings';
 import extUtils from '../../../utils/extUtils';
 
 type NavigationProps = ModalScreenProps<ReceiveTokenRoutesParams>;

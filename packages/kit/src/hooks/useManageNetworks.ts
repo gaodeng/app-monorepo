@@ -1,6 +1,6 @@
 import { makeSelector } from './redux';
 
-import type { Network } from '../store/reducers/network';
+import type { Network } from '../store/typings';
 
 export type IManageNetworks = {
   allNetworks: Network[];

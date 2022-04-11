@@ -4,9 +4,7 @@ import type { Account } from '@onekeyhq/engine/src/types/account';
 import type { Token } from '@onekeyhq/engine/src/types/token';
 import type { Wallet } from '@onekeyhq/engine/src/types/wallet';
 
-import type { Network } from './network';
-
-export type ValuedToken = Token & { balance?: string };
+import { Network, ValuedToken } from '../typings';
 
 export type GeneralInitialState = {
   activeAccount: Account | null;

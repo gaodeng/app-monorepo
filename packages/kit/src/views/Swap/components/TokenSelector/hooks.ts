@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import backgroundApiProxy from '../../background/instance/backgroundApiProxy';
+import backgroundApiProxy from '../../../../background/instance/backgroundApiProxy';
 
-import type { ValuedToken } from '../../store/typings';
+import type { ValuedToken } from '../../../../store/typings';
 
 export const useSearchTokens = (
   terms: string,

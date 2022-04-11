@@ -35,7 +35,7 @@ import {
 } from '../../../routes/types';
 import { ManageTokenRoutes } from '../../ManageTokens/types';
 
-import type { ValuedToken } from '../../../store/reducers/general';
+import type { ValuedToken } from '../../../store/typings';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 type NavigationProps = NativeStackNavigationProp<

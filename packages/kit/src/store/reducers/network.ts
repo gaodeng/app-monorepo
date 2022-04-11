@@ -1,8 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import type { Network as EngineNetwork } from '@onekeyhq/engine/src/types/network';
-
-export type Network = EngineNetwork;
+import { Network } from '../typings';
 
 type InitialState = {
   network: Network[] | null;
