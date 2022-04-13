@@ -38,6 +38,13 @@ export default class Vault extends VaultBase {
     throw new Error('Method not implemented.');
   }
 
+  updateEncodedTxTokenApprove(
+    encodedTx: IEncodedTxAny,
+    amount: string,
+  ): Promise<IEncodedTxAny> {
+    throw new Error('Method not implemented.');
+  }
+
   buildUnsignedTxFromEncodedTx(encodedTx: any): Promise<UnsignedTx> {
     throw new Error('Method not implemented.');
   }

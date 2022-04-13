@@ -174,6 +174,42 @@ export default class Vault extends VaultBase {
     };
   }
 
+  async updateEncodedTxTokenApprove(
+    encodedTx: IEncodedTxEvm,
+    amount: string,
+  ): Promise<IEncodedTxEvm> {
+    // TODO: use decoder if available
+    // keccak256(Buffer.from('approve(address,uint256)') => '0x095ea7b3...'
+    const approveMethodID = '0x095ea7b3';
+    // methodID + '0' * 24 + 40 characters spender + 64 characters amount
+    const regex = new RegExp(`^${approveMethodID}[0]{24}[0-9a-zA-Z]{104}$`);
+
+    const { to: tokenAddress, data: origData } = encodedTx;
+    if (!regex.test(origData)) {
+      throw new Error('Not a approve transaction.');
+    }
+    const spender = `0x${origData.slice(34, 74)}`;
+
+    const amountBN = new BigNumber(amount);
+    if (amountBN.isNaN()) {
+      throw new Error(`Invalid amount input: ${amount}`);
+    }
+
+    const token = await this.engine.getOrAddToken(this.networkId, tokenAddress);
+    if (typeof token === 'undefined') {
+      throw new Error(`Token not found: ${tokenAddress}`);
+    }
+
+    const amountHex = toBigIntHex(amountBN.shiftedBy(token.decimals));
+    const data = `${approveMethodID}${defaultAbiCoder
+      .encode(['address', 'uint256'], [spender, amountHex])
+      .slice(2)}`;
+    return {
+      ...encodedTx,
+      data, // Override the data
+    };
+  }
+
   async buildUnsignedTxFromEncodedTx(
     encodedTx: IEncodedTxEvm,
     // TODO feeInfo

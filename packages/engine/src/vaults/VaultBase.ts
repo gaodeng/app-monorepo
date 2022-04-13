@@ -64,6 +64,11 @@ export abstract class VaultBase extends VaultContext {
     transferInfo: ITransferInfo,
   ): Promise<IEncodedTxAny>;
 
+  abstract updateEncodedTxTokenApprove(
+    encodedTx: IEncodedTxAny,
+    amount: string,
+  ): Promise<IEncodedTxAny>;
+
   // buildEncodedTxFromNftTransfer
   // buildEncodedTxFromSwap
 
